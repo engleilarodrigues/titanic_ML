@@ -44,7 +44,7 @@ def cleanData(data_train):
     Sex = pd.get_dummies(data_train['Sex'], drop_first=True)  #considera o primeiro dado como verdadeiro, ou seja, agr teremos uma coluna Male com valores 0 ou 1
     Embark = pd.get_dummies(data_train['Embarked'], drop_first=True) #fazemos o mesmo com a coluna de embarque
     data_train.drop(['Sex', 'Embarked', 'Name', 'Ticket'], axis=1, inplace=True)
-    data_train['Sex'] = Sex
+    data_train['Male'] = Sex
     data_train['Q'] = Embark['Q']
     data_train['S'] = Embark['S']
 
@@ -61,9 +61,9 @@ def main():
     cleanData(data_test)
 
     target = data_train['Survived'].values
-    features = data_train[["Pclass", "Age", "SibSp", "Parch", "Fare", "Sex", "Q", "S"]].values
+    features = data_train[["Pclass", "Age", "SibSp", "Parch", "Fare", "Male", "Q", "S"]].values
 
-    features_test = data_test[["Pclass", "Age", "SibSp", "Parch", "Fare", "Sex", "Q", "S"]].values
+    features_test = data_test[["Pclass", "Age", "SibSp", "Parch", "Fare", "Male", "Q", "S"]].values
 
     #criação do modelo e treino: Regressão Logistica
     RL = LogisticRegression()
@@ -90,9 +90,9 @@ def main():
     # resultados das predições com os dataset de test
     predictions = svm.predict(features_test)
     results = pd.DataFrame({"PassengerId": data_test["PassengerId"], "Survived": predictions})
-
-    #filename = "results.csv"
-    #results.to_csv(filename, index=False)
+    print(results.head())
+    filename = "results.csv"
+    results.to_csv(filename, index=False)
 
 if __name__ == '__main__':
     main()
