@@ -9,10 +9,11 @@ cujo a resposta se sobreviveram ou não é incerta.
 ## Pré-processamento dos dados
 Ao analisar os datasets é verifcado que o primeiro desafio é completar os dados ausentes, como fica claro 
 na imagem abaixo sobre os dados de treinamento. 
-<img src="imgs/dadosAusentes.png" width="80%" height="80%">
+<img src="imgs/dadosAusentes.png" width="100%" height="100%">
 
 Para preencher os dados da coluna Age, é analisado o gráfico de idades conforme as classes de passageiros. 
-<img src="imgs/idade_classes.png" width="50%" height="50%">
+<img src="imgs/idade_classes.png" width="100%" height="100%">
+
 Portanto, os dados serão preenchidas de acordo com a seguinte lógica:
 
 ````
@@ -33,7 +34,7 @@ def setAge(cols):
 Como a quantidade de dados ausentes na coluna Cabin é grande, a coluna será apenas eliminada. 
 
 Outra informação analisada é referente ao sexo dos passageiros.
-<img src="imgs/sobreviventes.png" width="50%" height="50%">
+<img src="imgs/sobreviventes.png" width="100%" height="100%">
 
 A informação da coluna Sex pode ser "female" e "male", a coluna em questão será substituída 
 pela coluna Male com informações binárias (0 e 1). Dessa forma se o passageiro tem a coluna Male = 0 sabemos automaticamente 
